@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kg.less.hm_02_05m.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity(), LoveContract {
 
     private val binding by lazy {
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity(), LoveContract {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.btnCal.setOnClickListener{
+        binding.btnCal.setOnClickListener {
             val firstName = binding.etFname.text.toString()
             val secondName = binding.etSname.text.toString()
 
@@ -37,17 +38,17 @@ class MainActivity : AppCompatActivity(), LoveContract {
                 putString("percentage", result.percentage)
             }
         }
-        supportFragmentManager.commit {
-            replace(R.id.fragment_Container, resultFragment)
-            addToBackStack(null)
-        }
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_Container, resultFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     override fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun getPercent(firstName: String, secondName: String) {
-
+    override fun getPercentage(firstName: String, secondName: String) {
     }
 }

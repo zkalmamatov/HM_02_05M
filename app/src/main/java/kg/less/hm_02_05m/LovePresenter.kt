@@ -19,7 +19,6 @@ class LovePresenter(private val contract: LoveContract) {
         ).enqueue(object : Callback<LoveModel> {
 
             override fun onResponse(p0: Call<LoveModel>, p1: Response<LoveModel>) {
-                TODO("Not yet implemented")
                 if (p1.isSuccessful) {
                     p1.body()?.let {
                         contract.showResult(it)

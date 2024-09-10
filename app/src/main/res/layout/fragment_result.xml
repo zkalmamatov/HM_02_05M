@@ -39,6 +39,7 @@
         android:layout_gravity="center"
         android:text="Your Score"
         android:textColor="@color/pink"
+        android:background="@color/white"
         android:textSize="20sp" />
 
     <TextView
